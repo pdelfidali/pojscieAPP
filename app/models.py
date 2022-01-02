@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String, nullable=False, unique=True)
     firstname = db.Column(db.String, nullable=False)
     lastname = db.Column(db.String, nullable=False)
-    balance = db.Column(db.DECIMAL, nullable=False, default=0)
+    balance = db.Column(db.Numeric, nullable=False, default=0)
     phone_number = db.Column(db.String, nullable=False)
 
     def password(self):
@@ -27,3 +27,36 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f'{self.id}: {self.username}'
 
+
+class Ticket(db.Model):
+    __tablename__ = 'tickets'
+    tid = db.Column(db.Integer, primary_key=True, nullable=False)
+    price = db.Column(db.Numeric, nullable=False, default=0)
+    uid = db.Column(db.Integer, primary_key=True, nullable=False)
+    eid = db.Column(db.Integer, primary_key=True, nullable=False)
+
+    def __repr__(self):
+        return f'{self.tid} na {self.eid} dla {self.uid}, cena:{self.price}'
+
+
+class Event(db.Model):
+    __tablename__ = 'events'
+    eid = db.Column(db.Integer, primary_key=True, nullable=False)
+    name = db.Column(db.String, nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
+    limit = db.Column(db.Integer, nullable=False, default=0)
+    sold = db.Column(db.Integer, nullable=False, default=0)
+    lid = db.Column(db.Integer, nullable=False)
+    sold = db.Column(db.Numeric, nullable=False, default=0)
+    soldout = db.Column(db.Boolean, nullable=False, default=0)
+    isOver = db.Column(db.Boolean, nullable=False, default=0)
+    artists_aid = db.Column(db.Integer, primary_key=True, nullable=False)
+
+
+class Artist(db.Model):
+    __tablename__ = 'artists'
+    aid = db.Column(db.Integer, primary_key=True, nullable=False)
+    name = db.Column(db.String, nullable=False)
+    genre = db.Column(db.String, nullable=False)
+    nationality = db.Column(db.String)
+    about = db.Column(db.String)
