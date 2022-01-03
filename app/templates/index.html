@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block page_content %}
-    <h1>
-        Dzień dobry
-        {% if current_user.is_authenticated %}
-            {{ current_user.username }}
-        {% endif %}
-    </h1>
+    <div class="container">
+        <h1>
+            Dzień dobry
+            {% if current_user.is_authenticated %}
+                {{ current_user.username }}
+            {% endif %}
+        </h1>
+    </div>
 {% endblock %}

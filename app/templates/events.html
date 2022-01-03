@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block page_content %}
+    <table class="table">
+    <tr>
+        <th>Nazwa</th>
+        <th>Data</th>
+    </tr>
+    {% for event in events.items %}
+        <tr>
+            <th> <a href="/event/{{ event.eid }}">{{ event.name }}</a></th>
+            <th>{{ event.date }}</th>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

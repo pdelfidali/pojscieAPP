@@ -44,7 +44,7 @@ class Event(db.Model):
     limit = db.Column(db.Integer, nullable=False, default=0)
     sold = db.Column(db.Integer, nullable=False, default=0)
     lid = db.Column(db.Integer, nullable=False)
-    sold = db.Column(db.Numeric, nullable=False, default=0)
+    income = db.Column(db.Numeric, nullable=False, default=0)
     soldout = db.Column(db.Boolean, nullable=False, default=0)
     isOver = db.Column(db.Boolean, nullable=False, default=0)
     artists_aid = db.Column(db.Integer, primary_key=True, nullable=False)
@@ -57,3 +57,20 @@ class Artist(db.Model):
     genre = db.Column(db.String, nullable=False)
     nationality = db.Column(db.String)
     about = db.Column(db.String)
+
+
+class Location(db.Model):
+    __tablename__ = 'locations'
+    lid = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
+    name = db.Column(db.String, nullable=False)
+    capacity = db.Column(db.String, nullable=False)
+    address = db.Column(db.Integer, nullable=False, default=0)
+    indoor = db.Column(db.Boolean, nullable=False, default=1)
+    cid = db.Column(db.Integer, nullable=False)
+
+
+class City(db.Model):
+    __tablename__ = 'cities'
+    cid = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
+    city = db.Column(db.String, nullable=False, unique=True)
+    province = db.Column(db.String, nullable=False)
