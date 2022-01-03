@@ -1,11 +1,17 @@
 {% extends "base.html" %}
 {% block page_content %}
     <div class="container">
-        <h1>
-            Dzień dobry
-            {% if current_user.is_authenticated %}
-                {{ current_user.username }}
-            {% endif %}
-        </h1>
+        {% if current_user.is_authenticated %}
+            <h1> Dzień dobry {{ current_user.username }} </h1>
+            <a href="/logout">Wyloguj się</a>
+        {%  else %}
+            <div class="row">
+                <div class="col"><a href="/login">Zaloguj się</a></div>
+                <div class="col"><a href="/register">Zarejestruj się</a></div>
+            </div>
+            <div class="row">
+                <a href="/events/1">Zobacz aktualne eventy!</a>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

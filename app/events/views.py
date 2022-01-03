@@ -3,9 +3,9 @@ from flask import render_template
 from . import events
 
 
-@events.route('/artist/<string:name>', methods=['GET'])
-def show_artist(name):
-    artist = Artist.query.filter_by(name=name).first()
+@events.route('/artist/<int:aid>', methods=['GET'])
+def show_artist(aid):
+    artist = Artist.query.filter_by(aid=aid).first()
     return render_template('artist.html', artist=artist)
 
 @events.route('/events/<int:page_num>', methods=['GET'])
