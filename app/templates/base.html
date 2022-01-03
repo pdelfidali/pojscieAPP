@@ -1,0 +1,22 @@
+{% extends "bootstrap/base.html" %}
+{% block head %}
+   <title>Battleship</title>
+   <meta charset="utf-8">
+{% endblock %}
+
+{% block content %}
+   {% with messages = get_flashed_messages() %}
+         {% if messages %}
+           <script>
+               window.onload = load;
+               function load() {
+                   var messages = {{ messages | safe }};
+                   for (var i = 0; i < messages.length; i++) {
+                       alert(messages[i]);
+                   }
+               }
+           </script>
+         {% endif %}
+   {% endwith %}
+   {% block page_content %}{% endblock %}
+{% endblock %}

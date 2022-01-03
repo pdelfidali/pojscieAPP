@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block head %}
+    <title>Strona autoryzacyjna</title>
+{% endblock %}
+{% block page_content %}
+    <div class="field">
+        {{ wtf.quick_form(form) }}
+    </div>
+{% endblock %}
